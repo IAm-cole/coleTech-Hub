@@ -5,11 +5,13 @@ import { Login } from '../pages/Login'
 import { Register } from '../pages/Register'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Admin } from "../pages/Admin";
 
 
 function App() {
-  const [user, setUser] = useState(" ");
+  const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -18,20 +20,24 @@ function App() {
         try {
           const res = await axios.get("/api/users/me", {
             headers: {
-              Authorization: `Bearer ${token}`
-            }
-          })
+              Authorization: `Bearer ${token}`,
+            },
+          });
           setUser(res.data);
+          console.log(res.data);
         } catch (error) {
-          setError(error.response ? error.response.data.message : "An error occurred");
-        }
+          setError(
+            error.response ? error.response.data.message : "An error occurred",
+          );
+        } finally {
+          setLoading(false);
         }
       }
-    
-     fetchUser() 
-    
-  },[])
+    };
 
+    fetchUser();
+  }, []);
+  console.log("Auth initialized, user:", user);
  
 
   return (
@@ -39,13 +45,35 @@ function App() {
       <Router>
         <Navbar user={user} setUser={setUser} />
         <Routes>
-          <Route path='/' element={<Home user={user} error={error} />} />
-          <Route path='/login' element={<Login setUser={setUser} />} />
-          <Route path='/register' element={<Register setUser={setUser} />} />
+          <Route
+            path="/"
+            element={<Home user={user} error={error} loading={loading} />}
+          />
+          <Route
+            path="/login"
+            element={
+              <Login
+                setUser={setUser}
+                loading={loading}
+                setLoading={setLoading}
+              />
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <Register
+                setUser={setUser}
+                loading={loading}
+                setLoading={setLoading}
+              />
+            }
+          />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </Router>
     </>
-  )
+  );
 }
 
 export default App
