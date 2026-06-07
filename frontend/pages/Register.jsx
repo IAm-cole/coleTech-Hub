@@ -13,25 +13,32 @@ export const Register = ({ setUser, loading, setLoading }) => {
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
+    console.log(e.target.value);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (loading) return;
-    setLoading(true);
-    setError("");
+
+    console.log("Before axios");
     try {
       const res = await axios.post("/api/users/register", formData);
       localStorage.setItem("token", res.data.token);
       setUser(res.data.user);
       navigate("/");
     } catch (error) {
+      console.error(error);
+
+      console.log(error.response);
+      console.log(error.message);
+
       setError(
-        error.response ? error.response.data.message : "Registration failed",
+        error.response?.data?.message || error.message || "Registration failed",
       );
-    } finally {
-      setLoading(false);
     }
+    setLoading(true);
+    setFormData("");
+    console.log("SUBMIT CLICKED");
   };
 
   return (
@@ -41,7 +48,7 @@ export const Register = ({ setUser, loading, setLoading }) => {
           Register
         </h1>
         <div>
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {error && <p className="text-red-500 text-sm">{setError}</p>}
 
           <form onSubmit={handleSubmit} className="space-y-3 ">
             <div>
@@ -93,14 +100,19 @@ export const Register = ({ setUser, loading, setLoading }) => {
                 name="password"
                 required
                 autoComplete="no"
-                shown="false"
                 className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
               />
             </div>
+            <div>
+              <button
+                className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200 cursor-pointer"
+                type="submit"
+                onClick={() => alert("button clicked")}
+              >
+                Register 
+              </button>
+            </div>
 
-            <button className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200 cursor-pointer">
-              Register
-            </button>
             <div className="flex justify-between items-center mt-3 text-base font-semibold">
               <h1>Already have an account?</h1>
               <Link to="/login">login</Link>
