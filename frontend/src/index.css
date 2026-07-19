@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+
+
+@layer components {
+    .search-bar {
+        @apply w-0 group-hover:w-75 transition-all duration-300 rounded-full group-hover:border group-hover:border-gray-500 px-3 py-1 focus:outline-none focus:border  dark:border-gray-800  ;
+
+
+    }
+} 
+
+@layer utiloties {
+    .hero-bg-color {
+        @apply bg-linear-to-r from-gray-300 to-gray-100 dark:from-gray-900 dark:to-gray-800 dark:text-white
+    }
+
+    .form-input {
+        @apply w-full rounded-3xl  border border-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white px-2 focus:outline-none
+
+
+    }
+}
