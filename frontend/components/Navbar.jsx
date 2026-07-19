@@ -99,17 +99,20 @@ export const Navbar = ({ handleOrderPop }) => {
   const filteredData = HeroSlide.filter((item) =>
     item.subtitle.toLowerCase().includes(search.toLowerCase()),
   );
+  // 
 
   return (
-    <div className="bg-white  dark:bg-gray-900 dark:text-white    duration-200 relative z-40">
+    <div className=" bg-white  dark:bg-gray-900 dark:text-white    duration-200 relative z-40">
       <div className="py-4">
         <div className="p-8 sm:p-12 flex justify-between items-center">
-          <div  className="flex  items-center gap-4">
+          <div className="flex  items-center gap-4">
             <a
-              className=" text-red-500 opacity-80 font-semibold tracking-widest text-2xl sm:text-3xl uppercase "
+              className=" text-red-500 opacity-80 font-semibold tracking-widest text-2xl sm:text-3xl "
               href="#"
             >
-              <span className="text-red-400">COLE-</span>EShop
+              {" "}
+              ColeTech-
+              <span className="text-red-600">Hub</span>
             </a>
 
             <div className="hidden lg:block">
@@ -140,7 +143,7 @@ export const Navbar = ({ handleOrderPop }) => {
                         <li key={index}>
                           <a
                             href={index.link}
-                            className="text-gray-500 hover:text-black dark:hover:text-white duration-200 inline-block w-full p-2 hover:bg-purple-500 rounded-md font-semibold"
+                            className="text-gray-500 hover:text-black dark:hover:text-white duration-200 inline-block w-full p-2 hover:bg-red-300 rounded-md font-semibold"
                           >
                             {item.name}
                           </a>

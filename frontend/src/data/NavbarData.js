@@ -265,3 +265,19 @@ export const CategortyData = [
     image: gamepad,
   },
 ]
+
+
+export const CategortyData2 = [
+  {
+    id: 1,
+    image: laptop,
+  },
+  {
+    id: 2,
+    image: monitor,
+  },
+  {
+    id: 3,
+    image: jbl,
+  },
+]

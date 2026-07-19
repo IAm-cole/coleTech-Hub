@@ -10,7 +10,7 @@ export const Category = () => {
             <p className="mb-0.5 text-gray-400 font-bold">Enjoy</p>
             <p className="font-semibold mb-0.5 text-2xl">With</p>
             <p className="text-4xl xl:text-5xl opacity-20 mb-0.5 font-bold">
-              PLAYSTATION
+              PLAYSTATIONS
             </p>
             <Button text="Browse" className="text-white bg-red-800 px-6" />
           </div>
@@ -31,7 +31,7 @@ export const Category = () => {
             <p className="mb-0.5 text-white font-bold">Enjoy</p>
             <p className="font-semibold mb-0.5 text-2xl">With</p>
             <p className="text-4xl xl:text-5xl opacity-50 mb-0.5 font-bold">
-              GADGETS
+              CAMERAS
             </p>
             <Button text="Browse" className="bg-white text-yellow-400 px-6" />
           </div>
@@ -51,7 +51,7 @@ export const Category = () => {
             <p className="mb-0.5 text-white font-bold">Enjoy</p>
             <p className="font-semibold mb-0.5 text-2xl">With</p>
             <p className="text-4xl xl:text-5xl opacity-20 mb-0.5 font-bold">
-              Gadget
+              CONSOLES(PAD)
             </p>
             <Button text="Browse" className="bg-white text-red-500 px-6" />
           </div>
